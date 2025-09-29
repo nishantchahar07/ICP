@@ -1,0 +1,13 @@
+class Solution {
+    public boolean isPerfectSquare(int num) {
+        int i = 0;
+        int j = num;
+        while( i <= j){
+            int mid = i+ (j-i)/2;
+            if(Math.pow(mid , 2) == num)return true;
+            else if(Math.pow(mid , 2) > num ) j = mid-1;
+            else i = mid+1;
+        }
+       return false; 
+    }
+}
