@@ -1,0 +1,24 @@
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> ll = new ArrayList<>();
+        boolean[] visited = new boolean[n];
+        helper(n,k,0,0,visited,ll,ans);
+        return ans;
+    }
+    public void helper(int n, int k, int idx, int p, boolean[] visited, List<Integer> ll, List<List<Integer>> ans){
+        if(p == k){
+            ans.add(new ArrayList<>(ll));
+            return;
+        }
+        for(int i = idx; i<n; i++){
+            if(!visited[i]){
+                visited[i] = true;
+                ll.add(i+1);
+                helper(n,k,i+1,p+1,visited,ll,ans);
+                visited[i] = false;
+                ll.remove(ll.size()-1);
+            }
+        }
+    }
+}
